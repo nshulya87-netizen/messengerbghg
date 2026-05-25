@@ -1,0 +1,117 @@
+[25.05.2026 17:12] Nikt0: :root {
+    --bg-dark: #121214;
+    --panel-dark: #1a1a1e;
+    --neon-blue: #00f2fe;
+    --neon-purple: #4facfe;
+    --text-color: #e2e8f0;
+    --text-muted: #64748b;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Стили авторизации */
+.auth-container {
+    background: var(--panel-dark);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 32px rgba(0, 242, 254, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.auth-container h2 {
+    margin-bottom: 30px;
+    background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    background: #26262b;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: #fff;
+    box-sizing: border-box;
+}
+.buttons-row {
+    display: flex;
+    gap: 15px;
+}
+.btn {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.btn-login { background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple)); color: #000; }
+.btn-reg { background: #2d2d35; color: #fff; }
+.btn:hover { opacity: 0.9; transform: translateY(-1px); }
+
+/* Основной интерфейс приложения */
+.app-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Боковая панель */
+.sidebar {
+    width: 320px;
+    background: var(--panel-dark);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+.profile-box {
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.nickname { color: var(--neon-blue); }
+.my-id code { background: #26262b; padding: 4px 8px; border-radius: 4px; color: #ff007f; }
+.btn-logout { color: var(--text-muted); font-size: 14px; text-decoration: none; }
+
+.add-friend-box { padding: 20px; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+.add-friend-box input { width: 100%; padding: 10px; background: #26262b; border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 6px; color: #fff; margin-bottom: 10px; box-sizing: border-box;}
+.btn-add { width: 100%; padding: 10px; background: var(--neon-purple); border: none; color: white; border-radius: 6px; cursor: pointer; font-weight: bold; }
+
+.friends-list { padding: 20px; flex: 1; overflow-y: auto; }
+.friend-item { display: flex; align-items: center; padding: 12px; background: #222227; border-radius: 8px; margin-bottom: 10px; cursor: pointer; transition: 0.2s; }
+.friend-item:hover { background: #2d2d35; }
+.avatar { font-size: 24px; margin-right: 15px; }
+.friend-info { display: flex; flex-direction: column; }
+.friend-id-lbl { font-size: 12px; color: var(--text-muted); }
+
+/* Зона чата */
+.chat-area { flex: 1; background: var(--bg-dark); display: flex; flex-direction: column; }
+.welcome-screen { margin: auto; text-align: center; color: var(--text-muted); }
+.chat-box { display: flex; flex-direction: column; height: 100%; }
+.chat-header { padding: 20px; background: var(--panel-dark); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+
+.messages-container { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 10px; }
+.message { max-width: 60%; padding: 12px 16px; border-radius: 12px; line-height: 1.4; word-break: break-word; }
+.my-message { background: var(--neon-purple); color: white; align-self: flex-end; border-bottom-right-radius: 2px; }
+.other-message { background: #26262b; color: white; align-self: flex-start; border-bottom-left-radius: 2px; }
+
+.chat-input-row { padding: 20px; background: var(--panel-dark); display: flex; gap: 15px; }
+.chat-input-row input { flex: 1; padding: 15px; background: #26262b; border: 1px solid rgba(255, 255, 255, 0.
+[25.05.2026 17:12] Nikt0: 1); border-radius: 8px; color: #fff; }
+.btn-send { padding: 0 25px; background: linear-gradient(45deg, var(--neon-blue), var(--neon-purple)); border: none; border-radius: 8px; font-weight: bold; cursor: pointer; }
+
+.flash-message, .flash-info { color: #ff4a4a; margin-bottom: 10px; font-size: 14px; }
+.empty-list { font-size: 14px; color: var(--text-muted); }

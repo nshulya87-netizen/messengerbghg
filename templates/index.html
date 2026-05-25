@@ -1,0 +1,55 @@
+// Входим в персональную комнату с этим другом на сервере
+            socket.emit('join', { user_id: currentUserId, friend_id: friendId });
+        }
+
+        // Получение истории сообщений при входе в чат
+        socket.on('history', function(messages) {
+            const container = document.getElementById('messages-container');
+            messages.forEach(msg => {
+                appendMessage(msg.text, msg.sender_id == currentUserId);
+            });
+            scrollToBottom();
+        });
+
+        // Получение нового сообщения в реальном времени
+        socket.on('receive_message', function(data) {
+            appendMessage(data.text, data.sender_id == currentUserId);
+            scrollToBottom();
+        });
+
+        // Функция отрисовки сообщения на экране
+        function appendMessage(text, isMine) {
+            const container = document.getElementById('messages-container');
+            const msgDiv = document.createElement('div');
+            msgDiv.classList.add('message');
+            msgDiv.classList.add(isMine ? 'my-message' : 'other-message');
+            msgDiv.innerText = text;
+            container.appendChild(msgDiv);
+        }
+
+        // Отправка сообщения по кнопке или Enter
+        function sendMessage() {
+            const input = document.getElementById('message-input');
+            const text = input.value.trim();
+            if (text && activeFriendId) {
+                socket.emit('send_message', {
+                    user_id: currentUserId,
+                    friend_id: activeFriendId,
+                    text: text
+                });
+                input.value = '';
+            }
+        }
+
+        document.getElementById('send-btn').addEventListener('click', sendMessage);
+        document.getElementById('message-input').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') sendMessage();
+        });
+
+        function scrollToBottom() {
+            const container = document.getElementById('messages-container');
+            container.scrollTop = container.scrollHeight;
+        }
+    </script>
+</body>
+</html>
